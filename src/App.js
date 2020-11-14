@@ -12,8 +12,8 @@ function App() {
 
   // Function to handle Input Change ehen the user searches for jobs
   const handleParamChange = (e) => {
-    const param = e.target.name;
-    const value = e.target.value;
+    let param = e.target.name;
+    let value = e.target.value;
     setPage(1)
     setParams(prevParams => {
       return {...prevParams, [param]: value}
@@ -24,8 +24,8 @@ function App() {
   return (
     <Container className="my-4">
     <h1 className="mb-4 text-center text-white">Github Jobs</h1>
-    <SearchForm params={params} onParamsChange={handleParamChange} />
-    
+    <SearchForm params={params} handleParamChange={handleParamChange} />
+
     <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
       {loading && <h1>Loading...</h1>}
       {error && <h1>Error occured. Try refreshing the page</h1>}
